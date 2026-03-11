@@ -123,6 +123,6 @@ int main()
     service.showRecommendations();
 
     delete strategy;
-
+    
     return 0;
 }
