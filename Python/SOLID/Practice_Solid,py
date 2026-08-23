@@ -1,0 +1,47 @@
+from abc import ABC, abstractmethod
+
+
+class Exporter(ABC):
+
+    @abstractmethod
+    def export(self, message):
+        pass
+
+
+class PdfExport(Exporter):
+
+    def export(self, message):
+        print(f"PDF: {message}")
+
+
+class TxtExport(Exporter):
+
+    def export(self, message):
+        print(f"Txt: {message}")
+
+
+class HtmlExport(Exporter):
+    def export(self, message):
+        print(f"HTML: {message}")
+
+
+class ExportService:
+
+    def __init__(self, exporter: Exporter):
+        self.exporter = exporter
+
+    def export(self, message):
+        self.exporter.export(message)
+        print("Exported successfully")
+
+
+service = ExportService(PdfExport())
+service.export("Hello")
+
+
+service = ExportService(TxtExport())
+service.export("Hello")
+
+
+service = ExportService(HtmlExport())
+service.export("Hello")
